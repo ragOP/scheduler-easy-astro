@@ -7,7 +7,7 @@ route.post("/schedule-job/create", async (req, res) => {
   console.log(`Scheduling job for email: ${email}`);
 
   try {
-    const job = await agenda.schedule("in 1 minute", "send abandoned cart email", {
+    const job = await agenda.schedule("in 30 minutes", "send abandoned cart email", {
       email,
       stage: 1,
     });

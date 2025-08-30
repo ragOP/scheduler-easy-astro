@@ -1,13 +1,15 @@
 const { transporter } = require("../../config/index");
+const { discountEmailTemplate } = require("../email_template");
 
-async function send_email_via_nodemailer(mail, max_tries, back_off, discount) {
+async function send_email_via_nodemailer(mail, max_tries, back_off, discount, discount_code) {
   let attempts = 0;
 
   const mail_options = {
     from: process.env.SMTP_FROM_EMAIL || "no-reply@example.com",
     to: mail,
     subject: `Your ${discount} coupon is waiting!`,
-    text: `Use code ${discount} at checkout to claim your discount!`,
+    text: `Use code ${discount_code} to avail ${discount} discount!`,
+    html: discountEmailTemplate(discount, discount_code),
   };
 
   while (attempts < max_tries) {
