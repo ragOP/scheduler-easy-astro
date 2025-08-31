@@ -16,8 +16,8 @@ agenda.define("send abandoned cart email", async (job) => {
     discount_code = "rag30";
     nextDelay = "6 hours";
   } else if (stage === 2) {
-    discount = "50% OFF";
-    discount_code = "rag50";
+    discount = "60% OFF";
+    discount_code = "rag60";
     nextDelay = "24 hours";
   } else {
     discount = "75% FINAL OFFER";
